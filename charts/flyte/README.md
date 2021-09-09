@@ -130,12 +130,19 @@ helm install gateway bitnami/contour -n flyte
 | datacatalog.serviceAccount.create | bool | `true` | Should a service account be created for Datacatalog |
 | datacatalog.serviceAccount.imagePullSecrets | object | `{}` | ImapgePullSecrets to automatically assign to the service account |
 | datacatalog.tolerations | list | `[]` | tolerations for Datacatalog deployment |
-| db.database.host | string | `"postgres"` |  username: postgres |
+| db.admin.database.dbname | string | `"flyteadmin"` |  |
+| db.admin.database.host | string | `"postgres"` |  |
+| db.admin.database.port | int | `5432` |  |
+| db.admin.database.username | string | `"postgres"` |  |
+| db.datacatalog.database.dbname | string | `"datacatalog"` |  |
+| db.datacatalog.database.host | string | `"postgres"` |  |
+| db.datacatalog.database.port | int | `5432` |  |
+| db.datacatalog.database.username | string | `"postgres"` |  |
 | flyteadmin.affinity | object | `{}` | affinity for Flyteadmin deployment |
 | flyteadmin.configPath | string | `"/etc/flyte/config/*.yaml"` | Default regex string for searching configuration files |
 | flyteadmin.image.pullPolicy | string | `"IfNotPresent"` | Docker image pull policy |
 | flyteadmin.image.repository | string | `"cr.flyte.org/flyteorg/flyteadmin"` | Docker image for Flyteadmin deployment |
-| flyteadmin.image.tag | string | `"v0.6.22"` |  |
+| flyteadmin.image.tag | string | `"v0.6.22"` | Docker image tag |
 | flyteadmin.initialProjects | list | `["flytesnacks","flytetester","flyteexamples"]` | Initial projects to create |
 | flyteadmin.nodeSelector | object | `{}` | nodeSelector for Flyteadmin deployment |
 | flyteadmin.podAnnotations | object | `{}` | Annotations for Flyteadmin pods |

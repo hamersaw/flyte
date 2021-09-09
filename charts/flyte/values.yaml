@@ -1,3 +1,4 @@
+
 # ---------------------------------------------------------------------
 # Core System settings
 # This section consists of Core components of Flyte and their deployment
@@ -16,7 +17,6 @@ flyteadmin:
     # -- Docker image for Flyteadmin deployment
     repository: cr.flyte.org/flyteorg/flyteadmin
     # -- Docker image tag
-
     tag: v0.6.22 # FLYTEADMIN_TAG
     # -- Docker image pull policy
     pullPolicy: IfNotPresent
@@ -32,7 +32,6 @@ flyteadmin:
       memory: 50Mi
   # -- Default regex string for searching configuration files
   configPath: /etc/flyte/config/*.yaml
-
   # -- Initial projects to create
   initialProjects:
     - flytesnacks
@@ -478,20 +477,25 @@ storage:
     region: us-east-1
   # -- settings for storage type gcs
   gcs:
-    # -- GCP project ID. Required for storage type gcs.
-    # projectId:
+  # -- GCP project ID. Required for storage type gcs.
+  # projectId:
   # -- Settings for storage type custom. See https://github:com/graymeta/stow for supported storage providers/settings.
   custom: {}
 
 # Database configuration
 db:
-  database:
-    # port: 5432
-    # username: postgres
-    host: postgres
-    # dbname: flyte
-    # passwordPath: /etc/db/pass.txt
-    # options:
+  datacatalog:
+    database:
+      port: 5432
+      username: postgres
+      host: postgres
+      dbname: "datacatalog"
+  admin:
+    database:
+      port: 5432
+      username: postgres
+      host: postgres
+      dbname: "flyteadmin"
 
 # --------------------------------------------------------------------
 # Specializing your deployment using configuration

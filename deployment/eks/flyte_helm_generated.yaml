@@ -1524,6 +1524,15 @@ spec:
         image: "cr.flyte.org/flyteorg/flytescheduler:latest"
         imagePullPolicy: "IfNotPresent"
         name: flytescheduler
+        resources: 
+          limits:
+            cpu: 250m
+            ephemeral-storage: 200Mi
+            memory: 500Mi
+          requests:
+            cpu: 50m
+            ephemeral-storage: 200Mi
+            memory: 200Mi
         volumeMounts:
           - mountPath: /etc/db
             name: db-pass
@@ -1544,6 +1553,13 @@ spec:
         - name: auth
           secret:
             secretName: flyte-admin-secrets
+      affinity: 
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchLabels:
+                app.kubernetes.io/name: flytescheduler
+            topologyKey: kubernetes.io/hostname
 ---
 # Source: flyte/templates/console/deployment.yaml
 apiVersion: apps/v1

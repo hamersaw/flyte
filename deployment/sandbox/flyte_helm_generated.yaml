@@ -3648,6 +3648,15 @@ spec:
         image: "cr.flyte.org/flyteorg/flytescheduler:latest"
         imagePullPolicy: "IfNotPresent"
         name: flytescheduler
+        resources: 
+          limits:
+            cpu: 250m
+            ephemeral-storage: 100Mi
+            memory: 500Mi
+          requests:
+            cpu: 10m
+            ephemeral-storage: 50Mi
+            memory: 50Mi
         volumeMounts:
           
           - mountPath: /etc/flyte/config
